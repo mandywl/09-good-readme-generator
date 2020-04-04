@@ -34,13 +34,6 @@ function promptUser() {
 }
 
 function writeToFile(answers, profilePhoto, gitHubEmail) {
-  //   return `
-  // # ${answers.projectTitle}
-  // # Questions
-  // * User GitHub profile picture
-  // ![profile photo](${profilePhoto})
-  // * User GitHub email: ${gitHubEmail}
-  //     `;
   const readmeData = file(answers, profilePhoto, gitHubEmail);
   writeFileAsync("README.md", readmeData);
 }
@@ -52,9 +45,7 @@ async function init() {
     const { data } = await githubData.getUser("mandywl");
     const profilePhoto = data.avatar_url;
     const gitHubEmail = data.email;
-    console.log(gitHubEmail);
-    // const readmeData = writeToFile(answers, profilePhoto, gitHubEmail);
-    // await writeFileAsync("README.md", readmeData);
+    //console.log(gitHubEmail);
     writeToFile(answers, profilePhoto, gitHubEmail)
     console.log("Successfully wrote to index.html");
   } catch (err) {
